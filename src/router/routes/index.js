@@ -1,5 +1,10 @@
 export const basicRoutes = [
   {
+    name: 'main',
+    path: '/',
+    component: () => import('@/layout/index.vue'),
+  },
+  {
     name: 'LOGIN',
     path: '/login',
     component: () => import('@/views/login/index.vue'),
@@ -11,7 +16,7 @@ export const basicRoutes = [
 
   {
     name: 'Dashboard',
-    path: '/',
+    path: '/dashboard',
     component: () => import('@/views/dashboard/index.vue'),
     meta: {
       title: 'Dashboard',

@@ -2,8 +2,8 @@ import { defAxios as request } from '@/utils/http'
 
 export const login = (data) => {
   return request({
-    url: '/auth/login',
-    method: 'post',
+    url: '/login',
+    method: 'POST',
     data,
   })
 }

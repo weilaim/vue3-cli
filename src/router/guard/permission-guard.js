@@ -19,6 +19,7 @@ export function createPermissionGuard(router) {
           next()
         } else {
           await userStore.getUserInfo().catch((error) => {
+            console.log(error)
             removeToken()
             toLogin()
             $message.error(error.message || '获取用户信息失败！')

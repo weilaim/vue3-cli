@@ -5,8 +5,8 @@
         {{ title }}
       </h5>
       <el-form :model="loginInfo" w-full>
-        <el-form-item w-full mt-30 prop="name">
-          <el-input v-model="loginInfo.name" placeholder="Please input name" />
+        <el-form-item w-full mt-30 prop="username">
+          <el-input v-model="loginInfo.username" placeholder="Please input username" />
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="loginInfo.password" type="password" placeholder="Please input password" show-password />
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { login } from '../../api/auth'
 import { useRouter } from 'vue-router'
 import { lStorage } from '../../utils/cache'
@@ -35,28 +35,30 @@ const router = useRouter()
 const title = import.meta.env.VITE_APP_TITLE
 const isRemember = ref(false)
 const loginInfo = ref({
-  name: '',
-  password: '',
+  username: 'admin',
+  password: '123456',
 })
 
 //初始话表单账号密码。如果在本地存储有的话。
 initLoginInfo()
 
 const handleLogin = async () => {
-  const { name, password } = loginInfo.value
-  if (!name || !password) {
+  const { username, password } = loginInfo.value
+  if (!username || !password) {
     $message.warning('请输入账号或密码')
     return
   }
 
   //登录
   try {
-    const res = await login({ name, password: password.toString() })
+    const res = await login({ username, password: password.toString() })
+    console.log(res)
+
     if (res.code === 0) {
       $message.success('登录成功啦')
       setToken(res.data.token)
       if (isRemember.value) {
-        lStorage.set('loginInfo', { name, password })
+        lStorage.set('loginInfo', { username, password })
       } else {
         lStorage.remove('loginInfo')
       }
@@ -72,7 +74,7 @@ const handleLogin = async () => {
 function initLoginInfo() {
   const localLoginInfo = lStorage.get('loginInfo')
   if (localLoginInfo) {
-    loginInfo.value.name = localLoginInfo.name || ''
+    loginInfo.value.username = localLoginInfo.username || ''
     loginInfo.value.password = localLoginInfo.password || ''
   }
 }
