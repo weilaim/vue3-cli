@@ -29,7 +29,6 @@ import { useUserStore } from '../../store/modules/user'
 const permissionStore = usePermissionStore()
 const userStore = useUserStore()
 
-console.log(permissionStore)
 function logout() {
   userStore.logout()
   $message.success('已退出登录')

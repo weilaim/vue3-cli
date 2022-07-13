@@ -4,34 +4,21 @@
       <h5 text-24 font-normal color="#6a6a6a">
         {{ title }}
       </h5>
-      <div mt-30 w-full>
-        <n-input
-          v-model:value="loginInfo.name"
-          autofocus
-          class="text-16 items-center h-50 pl-10"
-          placeholder="admin"
-          :maxlength="20"
-        >
-        </n-input>
-      </div>
-      <div mt-30 w-full>
-        <n-input
-          v-model:value="loginInfo.password"
-          class="text-16 items-center h-50 pl-10"
-          type="password"
-          show-password-on="mousedown"
-          placeholder="123456"
-          :maxlength="20"
-          @keydown.enter="handleLogin"
-        />
-      </div>
+      <el-form :model="loginInfo" w-full >
+        <el-form-item w-full mt-30 prop="name">
+          <el-input v-model="loginInfo.name" placeholder="Please input name" />
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input v-model="loginInfo.password" type="password" placeholder="Please input password" show-password />
+        </el-form-item>
+      </el-form>
 
       <div mt-20 w-full>
         <n-checkbox :checked="isRemember" label="记住我" :on-update:checked="(val) => (isRemember = val)" />
       </div>
 
       <div mt-20 w-full>
-        <n-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">登录</n-button>
+        <el-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">登录</el-button>
       </div>
     </div>
   </div>
