@@ -27,6 +27,14 @@ export const basicRoutes = [
     },
   },
   {
+    name: 'TestElement',
+    path: '/test/element',
+    component: () => import('@/views/test/TestElement.vue'),
+    meta: {
+      title: '测试element plus',
+    },
+  },
+  {
     name: '404',
     path: '/404',
     component: () => import('@/views/error-page/404.vue'),

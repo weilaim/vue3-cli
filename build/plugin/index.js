@@ -17,16 +17,21 @@ import { unocss } from './unocss'
  * usage: 直接使用组件,无需在任何地方导入组件
  */
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { configMockPlugin } from './mock'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export function createVitePlugins(viteEnv, isBuild) {
   const plugins = [
     vue(),
     VueSetupExtend(),
     configHtmlPlugin(viteEnv, isBuild),
     unocss(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
     Components({
-      resolvers: [NaiveUiResolver()],
+      resolvers: [NaiveUiResolver(), ElementPlusResolver()],
     }),
   ]
 
