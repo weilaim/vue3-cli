@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { setupRouterGuard } from './guard'
 import { basicRoutes as routes } from './routes'
 
 export const router = createRouter({
@@ -9,4 +10,5 @@ export const router = createRouter({
 
 export function setupRouter(app) {
   app.use(router)
+  setupRouterGuard(router)
 }
