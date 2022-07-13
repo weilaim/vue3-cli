@@ -4,7 +4,7 @@
       <h5 text-24 font-normal color="#6a6a6a">
         {{ title }}
       </h5>
-      <el-form :model="loginInfo" w-full >
+      <el-form :model="loginInfo" w-full>
         <el-form-item w-full mt-30 prop="name">
           <el-input v-model="loginInfo.name" placeholder="Please input name" />
         </el-form-item>
