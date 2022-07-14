@@ -9,6 +9,7 @@ export const router = createRouter({
 })
 
 export function setupRouter(app) {
+  autoload(router)
   app.use(router)
   setupRouterGuard(router)
 }
