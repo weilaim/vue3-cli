@@ -1,18 +1,22 @@
 export default [
   {
-    name: 'user',
-    path: '/user',
+    name: 'users',
+    path: '/users',
     component: () => import('@/layout/index.vue'),
-    redirect: '/user/list',
+    redirect: '/users/users',
     meta: {
       title: '动态路由1222',
       role: ['admin'],
     },
     children: [
       {
-        path: 'list',
-        name: 'list',
+        name: 'users',
+        path: '/users',
         component: () => import('@/views/users/index.vue'),
+        meta: {
+          title: '这里用户列表啊',
+          role: ['admin'],
+        },
       },
     ],
   },

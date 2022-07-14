@@ -1,14 +1,17 @@
 import { defineStore } from 'pinia'
 import { asyncRoutes, basicRoutes } from '@/router/routes'
 
+//是否有权限
 function hasPermission(route, role) {
   const routeRole = route.meta?.role ? route.meta.role : []
+  // console.log(routeRole or role)  ['admin'] or ['editor']
   if (!role.length || !routeRole.length) {
     return false
   }
   return role.some((item) => routeRole.includes(item))
 }
 
+//过滤路由
 function filterAsyncRoutes(routes = [], role) {
   const ret = []
   routes.forEach((route) => {
@@ -17,9 +20,11 @@ function filterAsyncRoutes(routes = [], role) {
         ...route,
         children: [],
       }
+
       if (route.children && route.children.length) {
         curRoute.children = filterAsyncRoutes(route.children, role)
       } else {
+        // eflect.deleteProperty 允许用于删除属性。它很像 delete operator ，但它是一个函数。
         Reflect.deleteProperty(curRoute, 'children')
       }
       ret.push(curRoute)

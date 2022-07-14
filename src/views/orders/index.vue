@@ -1,7 +1,8 @@
 <template>
-  <div>orders</div>
+  <div class=""></div>
 </template>
 
-<script setup></script>
-
+<script setup>
+import { reactive, ref } from 'vue'
+</script>
 <style lang="scss" scoped></style>
