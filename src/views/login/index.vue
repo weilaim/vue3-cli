@@ -26,11 +26,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { login } from '../../api/auth'
 import { useRouter } from 'vue-router'
 import { lStorage } from '../../utils/cache'
 import { setToken } from '../../utils/token'
+import { useUserStore } from '../../store/modules/user'
 
+const userStore = useUserStore()
 const router = useRouter()
 const title = import.meta.env.VITE_APP_TITLE
 const isRemember = ref(false)
@@ -51,10 +52,10 @@ const handleLogin = async () => {
 
   //登录
   try {
-    const res = await login({ username, password: password.toString() })
+    const res = await userStore.userLogin({ username, password: password.toString() })
     console.log(res)
 
-    if (res.code === 0) {
+    if (res.meta.status === 200) {
       $message.success('登录成功啦')
       setToken(res.data.token)
       if (isRemember.value) {
@@ -64,10 +65,10 @@ const handleLogin = async () => {
       }
       router.push('/')
     } else {
-      $message.warning(res.message)
+      $message.warning(res.meta.msg)
     }
   } catch (error) {
-    $message.error(error.message)
+    $message.error(error.meta.msg)
   }
 }
 

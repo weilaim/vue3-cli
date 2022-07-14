@@ -11,7 +11,7 @@ export function getUsers(data = {}) {
 export function getUser(id) {
   if (id) {
     return request({
-      url: `/user/${id}`,
+      url: `/users/${id}`,
       method: 'get',
     })
   }

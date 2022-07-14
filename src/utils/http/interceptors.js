@@ -1,6 +1,7 @@
 import { isNullOrUndef } from '@/utils/is'
 import { isWithoutToken } from './helpers'
 import { getToken } from '@/utils/token'
+import { toLogin } from '@/utils/auth'
 export function reqResolve(config) {
   // 防止缓存，给get请求加上时间戳
   if (config.method === 'get') {
@@ -25,12 +26,14 @@ export function reqResolve(config) {
    * * jwt token
    * ! 认证方案: Bearer
    */
-  config.headers.Authorization = config.headers.Authorization || 'Bearer ' + token
+  config.headers.Authorization = config.headers.Authorization || token
 
   return config
 }
 
 export function reqReject(error) {
+  console.log('err', error)
+
   return Promise.reject(error)
 }
 
@@ -39,6 +42,8 @@ export function resResolve(response) {
 }
 
 export function resReject(error) {
+  console.log('error', error)
+
   let { code, message } = error.response?.data || {}
   if (isNullOrUndef(code)) {
     // 未知错误

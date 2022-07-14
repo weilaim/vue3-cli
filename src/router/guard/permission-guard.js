@@ -3,8 +3,11 @@ import { usePermissionStore } from '@/store/modules/permission'
 import { NOT_FOUND_ROUTE } from '@/router/routes'
 import { getToken, removeToken } from '@/utils/token'
 import { toLogin } from '@/utils/auth'
+import { removeLStorageUser } from '../../utils/user'
 
+//白名单
 const WHITE_LIST = ['/login']
+
 export function createPermissionGuard(router) {
   const userStore = useUserStore()
   const permissionStore = usePermissionStore()
@@ -15,17 +18,13 @@ export function createPermissionGuard(router) {
         next({ path: '/' })
       } else {
         if (userStore.userId) {
-          // 已经拿到用户信息
+          // 已经拿到用户信息 TOD
           next()
         } else {
-          await userStore.getUserInfo().catch((error) => {
-            console.log(error)
-            removeToken()
-            toLogin()
-            $message.error(error.message || '获取用户信息失败！')
-            return
-          })
+          //先执行一下init
+          userStore.init()
           const accessRoutes = permissionStore.generateRoutes(userStore.role)
+
           accessRoutes.forEach((route) => {
             !router.hasRoute(route.name) && router.addRoute(route)
           })

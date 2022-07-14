@@ -44,5 +44,6 @@ export function createProxy(list = []) {
       ...(isHttps ? { secure: false } : {}),
     }
   }
+
   return rst
 }

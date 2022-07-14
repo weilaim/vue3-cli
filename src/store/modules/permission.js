@@ -44,6 +44,7 @@ export const usePermissionStore = defineStore('permission', {
   },
   actions: {
     generateRoutes(role = []) {
+      //能通行的路由
       const accessRoutes = filterAsyncRoutes(asyncRoutes, role)
       this.accessRoutes = accessRoutes
       return accessRoutes
