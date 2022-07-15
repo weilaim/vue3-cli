@@ -5,11 +5,10 @@
     class="el-menu-vertical-demo"
     :default-active="defaultActive"
     text-color="#fff"
+    :collapse="menuStore.siderType"
     unique-opened
     h-full
     router
-    @open="handleOpen"
-    @close="handleClose"
   >
     <el-sub-menu v-for="(item, index) in menusList" :key="item.id" :index="index">
       <template #title>
@@ -38,7 +37,8 @@
 <script setup>
 import { ref } from 'vue'
 import { menuList } from '../../api/menu'
-
+import useMenuStore from '@/store/modules/menu'
+const menuStore = useMenuStore()
 const iconlist = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
