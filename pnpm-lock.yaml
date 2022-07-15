@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@element-plus/icons-vue': ^2.0.6
   '@unocss/preset-attributify': ^0.44.1
   '@unocss/preset-icons': ^0.44.1
   '@unocss/preset-uno': ^0.44.1
@@ -28,6 +29,7 @@ specifiers:
   vue-router: ^4.1.2
 
 dependencies:
+  '@element-plus/icons-vue': 2.0.6_vue@3.2.37
   axios: 0.27.2
   element-plus: 2.2.9_vue@3.2.37
   pinia: 2.0.16_vue@3.2.37
