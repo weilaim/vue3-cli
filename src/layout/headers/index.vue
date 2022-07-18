@@ -7,6 +7,7 @@
       </div>
     </div>
     <div flex items-center>
+      <ScreenFull mr-10 />
       <LangView mr-10 />
       <AvartarView />
     </div>
@@ -19,5 +20,6 @@ import HanbView from './components/HanbView.vue'
 import Breadcrumb from './components/breadcrumb.vue'
 import AvartarView from './components/AvartarView.vue'
 import LangView from './components/LangView.vue'
+import ScreenFull from './components/ScreenFull.vue'
 </script>
 <style lang="scss" scoped></style>

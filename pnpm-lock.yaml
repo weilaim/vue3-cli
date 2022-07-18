@@ -19,6 +19,7 @@ specifiers:
   prettier: ^2.7.1
   rollup-plugin-visualizer: ^5.6.0
   sass: ^1.53.0
+  screenfull: 5.1.0
   unocss: ^0.44.1
   unplugin-auto-import: ^0.9.2
   unplugin-vue-components: ^0.21.1
@@ -36,6 +37,7 @@ dependencies:
   axios: 0.27.2
   element-plus: 2.2.9_vue@3.2.37
   pinia: 2.0.16_vue@3.2.37
+  screenfull: 5.1.0
   vue: 3.2.37
   vue-i18n: 9.2.0-beta.39_vue@3.2.37
   vue-router: 4.1.2_vue@3.2.37
@@ -2299,6 +2301,11 @@ packages:
       immutable: 4.1.0
       source-map-js: 1.0.2
     dev: true
+
+  /screenfull/5.1.0:
+    resolution: {integrity: sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /scule/0.2.1:
     resolution: {integrity: sha512-M9gnWtn3J0W+UhJOHmBxBTwv8mZCan5i1Himp60t6vvZcor0wr+IM0URKmIglsWJ7bRujNAVVN77fp+uZaWoKg==}
