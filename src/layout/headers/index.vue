@@ -6,7 +6,8 @@
         <Breadcrumb />
       </div>
     </div>
-    <div>
+    <div flex items-center>
+      <LangView mr-10 />
       <AvartarView />
     </div>
   </div>
@@ -17,5 +18,6 @@ import { reactive, ref } from 'vue'
 import HanbView from './components/HanbView.vue'
 import Breadcrumb from './components/breadcrumb.vue'
 import AvartarView from './components/AvartarView.vue'
+import LangView from './components/LangView.vue'
 </script>
 <style lang="scss" scoped></style>

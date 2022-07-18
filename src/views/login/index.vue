@@ -2,7 +2,7 @@
   <div flex h-full>
     <div m-auto bg-gray-100 w-350 flex flex-col items-center border border-gray-300 p-30 rounded-10>
       <h5 text-24 font-normal color="#6a6a6a">
-        {{ $t('msg.title') }}
+        {{ $t('login.title') }}
       </h5>
       <el-form :model="loginInfo" w-full>
         <el-form-item w-full mt-30 prop="username">
@@ -18,7 +18,9 @@
       </div>
 
       <div mt-20 w-full>
-        <el-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">登录</el-button>
+        <el-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">
+          {{ $t('login.btnTitle') }}</el-button
+        >
       </div>
     </div>
   </div>

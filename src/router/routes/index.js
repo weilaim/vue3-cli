@@ -1,6 +1,6 @@
 export const basicRoutes = [
   {
-    name: 'main',
+    name: 'home',
     path: '/',
     component: () => import('@/layout/index.vue'),
   },
