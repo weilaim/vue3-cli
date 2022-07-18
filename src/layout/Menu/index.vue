@@ -9,8 +9,10 @@
     unique-opened
     h-full
     router
+    @open="handleOpen"
+    @close="handleClose"
   >
-    <el-sub-menu v-for="(item, index) in menusList" :key="item.id" :index="index">
+    <el-sub-menu v-for="(item, index) in menusList" :key="index" :index="String(item.id)">
       <template #title>
         <el-icon>
           <component :is="iconlist[index]"></component>
@@ -46,6 +48,13 @@ const menusList = ref([])
 const initMenusList = async () => {
   const res = await menuList()
   menusList.value = res.data
+}
+
+const handleOpen = (key, keyPath) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key, keyPath) => {
+  console.log(key, keyPath)
 }
 
 const savePath = (path) => {
