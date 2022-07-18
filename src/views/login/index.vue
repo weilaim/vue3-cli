@@ -2,7 +2,7 @@
   <div flex h-full>
     <div m-auto bg-gray-100 w-350 flex flex-col items-center border border-gray-300 p-30 rounded-10>
       <h5 text-24 font-normal color="#6a6a6a">
-        {{ title }}
+        {{ $t('msg.title') }}
       </h5>
       <el-form :model="loginInfo" w-full>
         <el-form-item w-full mt-30 prop="username">
