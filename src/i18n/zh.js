@@ -14,6 +14,7 @@ export default {
   login: {
     title: '用户登录',
     btnTitle: '登录',
+    logout: '退出',
   },
   dialog: {
     deleteTitle: '确定要删除用户',

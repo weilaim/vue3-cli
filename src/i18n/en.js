@@ -14,6 +14,7 @@ export default {
   login: {
     title: 'user login',
     btnTitle: 'login',
+    logout: 'logout',
   },
   dialog: {
     deleteTitle: 'Are you sure you want to delete the user ',
