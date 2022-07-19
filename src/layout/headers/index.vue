@@ -7,8 +7,9 @@
       </div>
     </div>
     <div flex items-center>
-      <ScreenFull mr-10 />
-      <LangView mr-10 />
+      <Driver mr-15 />
+      <ScreenFull mr-15 />
+      <LangView mr-15 />
       <AvartarView />
     </div>
   </div>
@@ -21,5 +22,6 @@ import Breadcrumb from './components/breadcrumb.vue'
 import AvartarView from './components/AvartarView.vue'
 import LangView from './components/LangView.vue'
 import ScreenFull from './components/ScreenFull.vue'
+import Driver from './components/driver/index.vue'
 </script>
 <style lang="scss" scoped></style>

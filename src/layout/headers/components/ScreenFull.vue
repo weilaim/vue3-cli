@@ -1,23 +1,25 @@
 <template>
-  <i-off-screen
-    v-if="isScreen"
-    theme="two-tone"
-    size="22"
-    :fill="['#333', '#2F88FF']"
-    :stroke-width="3"
-    stroke-linejoin="miter"
-    @click="handleScreenFull"
-  />
-  <i-full-screen-one
-    v-else
-    cursor-pointer
-    theme="two-tone"
-    size="22"
-    :fill="['#333', '#2F88FF']"
-    :stroke-width="3"
-    stroke-linejoin="miter"
-    @click="handleScreenFull"
-  />
+  <div id="screen">
+    <i-off-screen
+      v-if="isScreen"
+      theme="two-tone"
+      size="22"
+      :fill="['#333', '#2F88FF']"
+      :stroke-width="3"
+      stroke-linejoin="miter"
+      @click="handleScreenFull"
+    />
+    <i-full-screen-one
+      v-else
+      cursor-pointer
+      theme="two-tone"
+      size="22"
+      :fill="['#333', '#2F88FF']"
+      :stroke-width="3"
+      stroke-linejoin="miter"
+      @click="handleScreenFull"
+    />
+  </div>
 </template>
 
 <script setup>

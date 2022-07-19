@@ -7,6 +7,7 @@ const useMenuStore = defineStore('menus', {
       lang: localStorage.getItem('lang') || 'zh', //中英文切换
     }
   },
+  getters: {},
   actions: {
     changeSiderType() {
       this.siderType = !this.siderType

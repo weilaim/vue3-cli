@@ -8,6 +8,7 @@ specifiers:
   '@unocss/preset-uno': ^0.44.1
   '@vitejs/plugin-vue': ^2.3.3
   axios: ^0.27.2
+  driver.js: ^0.9.8
   element-plus: ^2.2.9
   eslint: ^8.19.0
   eslint-config-prettier: ^8.5.0
@@ -35,6 +36,7 @@ dependencies:
   '@element-plus/icons-vue': 2.0.6_vue@3.2.37
   '@icon-park/vue-next': 1.4.2_vue@3.2.37
   axios: 0.27.2
+  driver.js: 0.9.8
   element-plus: 2.2.9_vue@3.2.37
   pinia: 2.0.16_vue@3.2.37
   screenfull: 5.1.0
@@ -968,6 +970,10 @@ packages:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /driver.js/0.9.8:
+    resolution: {integrity: sha512-bczjyKdX6XmFyCDkwtRmlaORDwfBk1xXmRO0CAe5VwNQTM98aWaG2LAIiIdTe53iV/B7W5lXlIy2xYtf0JRb7Q==}
+    dev: false
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
