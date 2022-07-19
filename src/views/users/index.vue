@@ -19,10 +19,13 @@
           <template v-if="item.prop === 'mg_state'" #default="{ row }">
             <el-switch v-model="row.mg_state" />
           </template>
-          <template v-if="item.prop === 'action'">
-            <el-button type="primary" size="small">a</el-button>
-            <el-button type="warning" size="small">b</el-button>
-            <el-button type="danger" size="small">c</el-button>
+          <template v-else-if="item.prop === 'create_time'" #default="{ row }">
+            {{ $filters.filterTime(row.create_time) }}
+          </template>
+          <template v-else-if="item.prop === 'action'" #default>
+            <el-button type="primary" size="small" :icon="Edit"></el-button>
+            <el-button type="warning" size="small" :icon="Setting"></el-button>
+            <el-button type="danger" size="small" :icon="Delete"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -32,7 +35,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Search } from '@element-plus/icons-vue'
+import { Search, Edit, Setting, Delete } from '@element-plus/icons-vue'
 import { getUsers } from '@/api/user'
 import { options } from './options'
 const querForm = ref({

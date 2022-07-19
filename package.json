@@ -13,6 +13,7 @@
     "@element-plus/icons-vue": "^2.0.6",
     "@icon-park/vue-next": "^1.4.2",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.3",
     "driver.js": "^0.9.8",
     "element-plus": "^2.2.9",
     "pinia": "^2.0.16",

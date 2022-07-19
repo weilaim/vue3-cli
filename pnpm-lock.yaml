@@ -8,6 +8,7 @@ specifiers:
   '@unocss/preset-uno': ^0.44.1
   '@vitejs/plugin-vue': ^2.3.3
   axios: ^0.27.2
+  dayjs: ^1.11.3
   driver.js: ^0.9.8
   element-plus: ^2.2.9
   eslint: ^8.19.0
@@ -36,6 +37,7 @@ dependencies:
   '@element-plus/icons-vue': 2.0.6_vue@3.2.37
   '@icon-park/vue-next': 1.4.2_vue@3.2.37
   axios: 0.27.2
+  dayjs: 1.11.3
   driver.js: 0.9.8
   element-plus: 2.2.9_vue@3.2.37
   pinia: 2.0.16_vue@3.2.37

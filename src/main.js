@@ -8,10 +8,12 @@ import { setupStore } from '@/store'
 import i18n from './i18n'
 import App from './App.vue'
 import * as ELIcon from '@element-plus/icons-vue'
+import filters from './utils/filters'
 const app = createApp(App)
 for (const iconname in ELIcon) {
   app.component(iconname, ELIcon[iconname])
 }
+filters(app)
 app.use(i18n)
 install(app, 'i')
 setupStore(app)
