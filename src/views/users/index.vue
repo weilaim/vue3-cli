@@ -5,7 +5,7 @@
         <el-col :span="7">
           <el-input v-model="querForm.query" :placeholder="$t(`table.placeholder`)" clearable></el-input>
         </el-col>
-        <el-button type="primary" :icon="Search">{{ $t('table.search') }}</el-button>
+        <el-button type="primary" :icon="Search" @click="initGetUserList">{{ $t('table.search') }}</el-button>
         <el-button type="primary">{{ $t('table.adduser') }}</el-button>
       </el-row>
       <el-table :data="tableData" stripe style="width: 100%">
@@ -29,6 +29,20 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="demo-pagination-block" mt-8 flex justify-end>
+        <el-pagination
+          v-model:currentPage="querForm.pagenum"
+          v-model:page-size="querForm.pagesize"
+          :page-sizes="[2, 5, 15, 20]"
+          :small="small"
+          :disabled="disabled"
+          :background="background"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="tatal"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
+      </div>
     </el-card>
   </div>
 </template>
@@ -43,12 +57,21 @@ const querForm = ref({
   pagenum: 1,
   pagesize: 2,
 })
-
+const tatal = ref(0)
 const tableData = ref([])
 const initGetUserList = async () => {
   const res = await getUsers(querForm.value)
+  tatal.value = res.data.total
   tableData.value = res.data.users
-  console.log('res', res)
+}
+const handleSizeChange = (val) => {
+  querForm.value.pagenum = 1
+  querForm.value.pagesize = val
+  initGetUserList()
+}
+const handleCurrentChange = (val) => {
+  querForm.value.pagenum = val
+  initGetUserList()
 }
 
 initGetUserList()
