@@ -3,7 +3,7 @@
     <el-card>
       <el-row :gutter="20" mb-10>
         <el-col :span="7">
-          <el-input v-model="querForm.query" :placeholder="$t(`table.placeholder`)" clearable></el-input>
+          <el-input v-model="querForm.query" :placeholder="$t('table.placeholder')" clearable></el-input>
         </el-col>
         <el-button type="primary" :icon="Search" @click="initGetUserList">{{ $t('table.search') }}</el-button>
         <el-button type="primary" @click="handleDialogValue()">{{ $t('table.adduser') }}</el-button>
@@ -25,7 +25,7 @@
           <template v-else-if="item.prop === 'action'" #default="{ row }">
             <el-button type="primary" size="small" :icon="Edit" @click="handleDialogValue(row)"></el-button>
             <el-button type="warning" size="small" :icon="Setting"></el-button>
-            <el-button type="danger" size="small" :icon="Delete"></el-button>
+            <el-button type="danger" size="small" :icon="Delete" @click="handleDelet(row.id)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -57,7 +57,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Search, Edit, Setting, Delete } from '@element-plus/icons-vue'
-import { getUsers, changeUserState } from '@/api/user'
+import { getUsers, changeUserState, deleteUser } from '@/api/user'
 import { options } from './options'
 import { useI18n } from 'vue-i18n'
 import DialogView from './components/DialogView.vue'
@@ -102,6 +102,23 @@ const handleCurrentChange = (val) => {
 const changeState = async (uid, type) => {
   const res = await changeUserState(uid, type)
   $message.success(res.meta.msg)
+}
+
+const handleDelet = (id) => {
+  ElMessageBox.confirm(i18n.t(`dialog.deleteTitle`), i18n.t(`dialog.deleteWarning`), {
+    confirmButtonText: i18n.t(`dialog.deleteConfirm`),
+    cancelButtonText: i18n.t(`dialog.deleteCancel`),
+    type: 'warning',
+  })
+    .then(async () => {
+      const res = await deleteUser(id)
+      initGetUserList()
+      ElMessage({
+        type: 'success',
+        message: res.meta.msg,
+      })
+    })
+    .catch(() => {})
 }
 
 initGetUserList()

@@ -18,6 +18,9 @@ export default {
   },
   dialog: {
     deleteTitle: '确定要删除用户',
+    deleteWarning: '重要提示',
+    deleteCancel: '取消',
+    deleteConfirm: '确定',
   },
   table: {
     username: '姓名',

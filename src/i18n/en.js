@@ -18,6 +18,9 @@ export default {
   },
   dialog: {
     deleteTitle: 'Are you sure you want to delete the user ',
+    deleteWarning: 'Waring',
+    deleteCancel: 'Cancel',
+    deleteConfirm: 'OK',
   },
   table: {
     username: 'username',

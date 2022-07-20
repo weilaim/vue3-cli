@@ -31,6 +31,14 @@ export function changeUserState(uid, type) {
     method: 'put',
   })
 }
+
+//删除用户
+export function deleteUser(id) {
+  return request({
+    url: `/users/${id}`,
+    method: 'delete',
+  })
+}
 export function getUser(id) {
   if (id) {
     return request({
