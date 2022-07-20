@@ -18,9 +18,7 @@
       </div>
 
       <div mt-20 w-full>
-        <el-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">
-          {{ $t('login.btnTitle') }}</el-button
-        >
+        <el-button w-full h-50 rounded-5 text-16 type="primary" @click="handleLogin">登录</el-button>
       </div>
     </div>
   </div>

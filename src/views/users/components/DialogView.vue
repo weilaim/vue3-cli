@@ -1,0 +1,100 @@
+<template>
+  <el-dialog :model-value="dialogVisible" :title="dialogTitle" width="40%" :before-close="handleClose">
+    <el-form ref="formRef" :model="form" :rules="rules" label-width="70px">
+      <el-form-item label="用户名" prop="username">
+        <el-input v-model="form.username" />
+      </el-form-item>
+      <el-form-item label="密码" prop="password">
+        <el-input v-model="form.password" />
+      </el-form-item>
+      <el-form-item label="邮箱" prop="email">
+        <el-input v-model="form.email" />
+      </el-form-item>
+      <el-form-item label="手机号" prop="mobile">
+        <el-input v-model="form.mobile" />
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="handleClose">取消</el-button>
+        <el-button type="primary" @click="handleConfirm">确认</el-button>
+      </span>
+    </template>
+  </el-dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { addUser } from '../../../api/user'
+const emit = defineEmits(['update:modelValue', 'initUserList'])
+const handleClose = () => {
+  emit('update:modelValue', false)
+}
+
+const handleConfirm = () => {
+  formRef.value.validate(async (volid) => {
+    if (volid) {
+      const res = await addUser(form.value)
+      $message.success(res.meta.msg)
+      emit('initUserList')
+      handleClose()
+    } else {
+      console.log('volid')
+    }
+  })
+}
+
+defineProps({
+  dialogTitle: {
+    type: String,
+    default: '',
+    required: true,
+  },
+})
+
+const formRef = ref(null)
+const form = ref({
+  username: '',
+  password: '',
+  email: '',
+  mobile: '',
+})
+
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: '请输入用户名',
+      trigger: 'blur',
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'blur',
+    },
+  ],
+  email: [
+    {
+      required: true,
+      message: '请输入邮箱',
+      trigger: 'blur',
+    },
+
+    {
+      type: 'email',
+      message: '请输入正确邮箱',
+      trigger: ['blur', 'change'],
+    },
+  ],
+  mobile: [
+    {
+      required: true,
+      message: '请输入手机号',
+      trigger: 'blur',
+    },
+  ],
+})
+</script>
+<style lang="scss" scoped></style>

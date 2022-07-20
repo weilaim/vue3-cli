@@ -7,6 +7,21 @@ export function getUsers(params = {}) {
   })
 }
 
+//添加用户
+export function addUser(data) {
+  return request({
+    url: '/users',
+    method: 'POST',
+    data,
+  })
+}
+//更改用户状态
+export function changeUserState(uid, type) {
+  return request({
+    url: `/users/${uid}/state/${type}`,
+    method: 'put',
+  })
+}
 export function getUser(id) {
   if (id) {
     return request({
