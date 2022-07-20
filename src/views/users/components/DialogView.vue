@@ -1,10 +1,10 @@
 <template>
   <el-dialog :model-value="dialogVisible" :title="dialogTitle" width="40%" :before-close="handleClose">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="70px">
-      <el-form-item label="用户名" prop="username">
+      <el-form-item v-if="dialogTitle === '添加用户'" label="用户名" prop="username">
         <el-input v-model="form.username" />
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item v-if="dialogTitle === '添加用户'" label="密码" prop="password">
         <el-input v-model="form.password" />
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
@@ -24,8 +24,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { addUser } from '../../../api/user'
+import { ref, watch } from 'vue'
+import { addUser, editorUser } from '@/api/user'
 const emit = defineEmits(['update:modelValue', 'initUserList'])
 const handleClose = () => {
   emit('update:modelValue', false)
@@ -34,8 +34,8 @@ const handleClose = () => {
 const handleConfirm = () => {
   formRef.value.validate(async (volid) => {
     if (volid) {
-      const res = await addUser(form.value)
-      $message.success(res.meta.msg)
+      props.dialogTitle === '添加用户' ? await addUser(form.value) : await editorUser(form.value)
+      $message.success('修改成功')
       emit('initUserList')
       handleClose()
     } else {
@@ -44,11 +44,15 @@ const handleConfirm = () => {
   })
 }
 
-defineProps({
+const props = defineProps({
   dialogTitle: {
     type: String,
     default: '',
     required: true,
+  },
+  dialogTableValue: {
+    type: Object,
+    default: () => {},
   },
 })
 
@@ -96,5 +100,12 @@ const rules = ref({
     },
   ],
 })
+watch(
+  () => props.dialogTableValue,
+  () => {
+    form.value = props.dialogTableValue
+  },
+  { deep: true, immediate: true }
+)
 </script>
 <style lang="scss" scoped></style>

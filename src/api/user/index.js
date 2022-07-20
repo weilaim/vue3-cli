@@ -15,6 +15,15 @@ export function addUser(data) {
     data,
   })
 }
+
+// 编辑用户
+export function editorUser(data) {
+  return request({
+    url: `/users/${data.id}`,
+    method: 'put',
+    data,
+  })
+}
 //更改用户状态
 export function changeUserState(uid, type) {
   return request({

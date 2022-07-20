@@ -6,7 +6,7 @@
           <el-input v-model="querForm.query" :placeholder="$t(`table.placeholder`)" clearable></el-input>
         </el-col>
         <el-button type="primary" :icon="Search" @click="initGetUserList">{{ $t('table.search') }}</el-button>
-        <el-button type="primary" @click="handleDialogValue">{{ $t('table.adduser') }}</el-button>
+        <el-button type="primary" @click="handleDialogValue()">{{ $t('table.adduser') }}</el-button>
       </el-row>
       <el-table :data="tableData" stripe style="width: 100%">
         <el-table-column
@@ -22,8 +22,8 @@
           <template v-else-if="item.prop === 'create_time'" #default="{ row }">
             {{ $filters.filterTime(row.create_time) }}
           </template>
-          <template v-else-if="item.prop === 'action'" #default>
-            <el-button type="primary" size="small" :icon="Edit"></el-button>
+          <template v-else-if="item.prop === 'action'" #default="{ row }">
+            <el-button type="primary" size="small" :icon="Edit" @click="handleDialogValue(row)"></el-button>
             <el-button type="warning" size="small" :icon="Setting"></el-button>
             <el-button type="danger" size="small" :icon="Delete"></el-button>
           </template>
@@ -48,6 +48,7 @@
       v-if="dialogVisible"
       v-model="dialogVisible"
       :dialog-title="dialogTitle"
+      :dialog-table-value="dialogTableValue"
       @init-user-list="initGetUserList"
     />
   </div>
@@ -60,6 +61,7 @@ import { getUsers, changeUserState } from '@/api/user'
 import { options } from './options'
 import { useI18n } from 'vue-i18n'
 import DialogView from './components/DialogView.vue'
+import { isNulld } from '../../utils/filters'
 const i18n = useI18n()
 const querForm = ref({
   query: '',
@@ -68,11 +70,18 @@ const querForm = ref({
 })
 const tatal = ref(0)
 const tableData = ref([])
+const dialogTableValue = ref({})
 // 子组件
 const dialogVisible = ref(false)
 const dialogTitle = ref('')
-const handleDialogValue = () => {
-  dialogTitle.value = '添加用户'
+const handleDialogValue = (row) => {
+  if (isNulld(row)) {
+    dialogTitle.value = '添加用户'
+    dialogTableValue.value = {}
+  } else {
+    dialogTitle.value = '编辑用户'
+    dialogTableValue.value = JSON.parse(JSON.stringify(row))
+  }
   dialogVisible.value = true
 }
 const initGetUserList = async () => {
