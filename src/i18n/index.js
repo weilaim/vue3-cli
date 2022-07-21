@@ -17,7 +17,6 @@ const getCurrentLanguage = () => {
   localStorage.setItem('lang', langCode)
   return langCode
 }
-
 const i18n = createI18n({
   legacy: false,
   globalInjection: true,

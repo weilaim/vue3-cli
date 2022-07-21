@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    w-full
     active-text-color="#ffd04b"
     background-color="#304156"
     class="el-menu-vertical-demo"
@@ -52,10 +53,10 @@ const initMenusList = async () => {
 }
 
 const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath)
+  // console.log(key, keyPath)
 }
 const handleClose = (key, keyPath) => {
-  console.log(key, keyPath)
+  // console.log(key, keyPath)
 }
 
 const savePath = (path) => {

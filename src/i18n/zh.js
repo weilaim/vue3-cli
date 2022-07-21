@@ -46,4 +46,12 @@ export default {
     hamburgerBtn: '汉堡按钮',
     fullScreen: '全屏按钮',
   },
+  roles: {
+    id: '编号',
+    roleName: '角色名称',
+    roleDesc: '角色描述',
+    action: '操作',
+    addRole: '添加角色',
+    editorRole: '编辑角色',
+  },
 }

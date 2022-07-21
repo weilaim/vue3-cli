@@ -18,6 +18,15 @@ export default [
           role: ['admin'],
         },
       },
+      {
+        name: 'roles',
+        path: '/roles',
+        component: () => import('@/views/rights/RolesView.vue'),
+        meta: {
+          title: '角色列表',
+          role: ['admin'],
+        },
+      },
     ],
   },
 ]

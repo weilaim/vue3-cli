@@ -16,8 +16,8 @@
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleClose">取消</el-button>
-        <el-button type="primary" @click="handleConfirm">确认</el-button>
+        <el-button @click="handleClose">{{ $t(`dialog.deleteCancel`) }}</el-button>
+        <el-button type="primary" @click="handleConfirm">{{ $t(`dialog.deleteConfirm`) }}</el-button>
       </span>
     </template>
   </el-dialog>
@@ -30,7 +30,7 @@ const emit = defineEmits(['update:modelValue', 'initUserList'])
 const handleClose = () => {
   emit('update:modelValue', false)
 }
-
+const dialogVisible = ref(false)
 const handleConfirm = () => {
   formRef.value.validate(async (volid) => {
     if (volid) {

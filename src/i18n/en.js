@@ -46,4 +46,12 @@ export default {
     hamburgerBtn: 'hamburgerBtn',
     fullScreen: 'fullScreen',
   },
+  roles: {
+    id: 'id',
+    roleName: 'roleName',
+    roleDesc: 'roleDesc',
+    action: 'action',
+    addRole: 'add role',
+    editorRole: 'editro role',
+  },
 }

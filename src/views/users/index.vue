@@ -42,7 +42,6 @@
       </div>
     </el-card>
     <DialogView
-      v-if="dialogVisible"
       v-model="dialogVisible"
       :dialog-title="dialogTitle"
       :dialog-table-value="dialogTableValue"

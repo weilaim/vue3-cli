@@ -74,6 +74,7 @@ export const useUserStore = defineStore('user', {
       removeToken()
       localStorage.removeItem('lang')
       removeLStorageUser()
+      localStorage.removeItem('uid')
       this.userInfo = {}
       toLogin()
     },
