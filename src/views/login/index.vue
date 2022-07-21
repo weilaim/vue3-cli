@@ -29,9 +29,8 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { lStorage } from '../../utils/cache'
 import { setToken } from '../../utils/token'
-import { useUserStore } from '../../store/modules/user'
+import { login } from '../../api/auth'
 
-const userStore = useUserStore()
 const router = useRouter()
 const title = import.meta.env.VITE_APP_TITLE
 const isRemember = ref(false)
@@ -52,12 +51,11 @@ const handleLogin = async () => {
 
   //登录
   try {
-    const res = await userStore.userLogin({ username, password: password.toString() })
-    console.log(res)
-
+    const res = await login({ username, password: password.toString() })
     if (res.meta.status === 200) {
       $message.success('登录成功啦')
       setToken(res.data.token)
+      localStorage.setItem('uid', res.data.id)
       if (isRemember.value) {
         lStorage.set('loginInfo', { username, password })
       } else {

@@ -33,20 +33,21 @@ export const useUserStore = defineStore('user', {
     init() {
       this.userInfo = getLStorageUser() ?? {}
     },
-    // async getUserInfo() {
-    //   try {
-    //     const res = await getUser(this.userInfo.id)
-    //     if (res.code === 0) {
-    //       // const { id, name, av } = res.data
-    //       // this.userInfo = { id, name, avatar, role }
-    //       return Promise.resolve(res.data)
-    //     } else {
-    //       return Promise.reject(res)
-    //     }
-    //   } catch (error) {
-    //     return Promise.reject(error)
-    //   }
-    // },
+    async getUserInfo() {
+      try {
+        const uid = localStorage.getItem('uid')
+        const res = await getUser(uid)
+        if (res.meta.status === 200) {
+          const { id, username, mobile, email, rid } = res.data
+          this.userInfo = { id, username, rid, mobile, email }
+          return Promise.resolve(res.data)
+        } else {
+          return Promise.reject(res)
+        }
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
 
     async userLogin(data) {
       try {
@@ -71,6 +72,7 @@ export const useUserStore = defineStore('user', {
     },
     async logout() {
       removeToken()
+      localStorage.removeItem('lang')
       removeLStorageUser()
       this.userInfo = {}
       toLogin()

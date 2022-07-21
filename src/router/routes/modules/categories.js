@@ -5,8 +5,9 @@ export default [
     component: () => import('@/layout/index.vue'),
     redirect: '/goods/categories',
     meta: {
-      // title: '商品管理',
+      title: '商品管理',
       role: ['admin'],
+      icon: 'mdi:menu',
     },
     children: [
       {
@@ -16,6 +17,7 @@ export default [
         meta: {
           title: '商品分类',
           role: ['admin'],
+          icon: 'mdi:table',
         },
       },
     ],

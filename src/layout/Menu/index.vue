@@ -43,7 +43,8 @@ import useMenuStore from '@/store/modules/menu'
 const menuStore = useMenuStore()
 const iconlist = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
-const defaultActive = ref(sessionStorage.getItem('path') || '/users')
+// const defaultActive = ref(sessionStorage.getItem('path') || '/users')
+const defaultActive = '/'
 const menusList = ref([])
 const initMenusList = async () => {
   const res = await menuList()

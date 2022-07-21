@@ -18,7 +18,7 @@
       </li>
     </ul>
 
-    <n-button type="info" mt-20 size="small" @click="logout">换个角色看看</n-button>
+    <!-- <n-button type="info" mt-20 size="small" @click="logout">换个角色看看</n-button> -->
   </div>
 </template>
 

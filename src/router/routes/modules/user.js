@@ -3,7 +3,7 @@ export default [
     name: 'users',
     path: '/users',
     component: () => import('@/layout/index.vue'),
-    redirect: '/users/users',
+    redirect: '/users/list',
     meta: {
       title: '动态路由1222',
       role: ['admin'],

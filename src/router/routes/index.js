@@ -60,5 +60,4 @@ const asyncRoutes = []
 Object.keys(modules).forEach((key) => {
   asyncRoutes.push(...modules[key].default)
 })
-// console.log('asyncRoute', asyncRoutes)
 export { asyncRoutes }
