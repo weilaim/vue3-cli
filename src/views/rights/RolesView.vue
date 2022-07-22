@@ -11,7 +11,7 @@
       >
         <template v-if="item.label === 'action'" #default="{ row }">
           <el-button type="primary" :icon="Edit" @click="handleRole(row)" />
-          <el-button type="info" :icon="Setting" />
+          <el-button type="info" :icon="Setting" @click="handleSetting(row)" />
           <el-button type="danger" :icon="Delete" @click="handleDeleteRole(row.id)" />
         </template>
       </el-table-column>
@@ -23,6 +23,7 @@
       :dialog-table-value="dialogTableValue"
       @init-roles-list="initRolesList"
     />
+    <RoleTree v-model="roleVisible" :role-data="roleData" :role-title="roleTitle" />
   </el-card>
 </template>
 
@@ -34,13 +35,18 @@ import { roleList, deleRole } from '@/api/roles'
 import { useI18n } from 'vue-i18n'
 import DialogView from './components/DialogView.vue'
 import { isNulld } from '../../utils/filters'
+import RoleTree from './components/RoleTree.vue'
 const i18n = useI18n()
 const tableData = ref([])
 const dialogTitle = ref('')
+const roleTitle = ref('')
 const dialogTableValue = ref({})
+const roleData = ref({})
 //dialog
 const dialogVisible = ref(false)
 
+// tree
+const roleVisible = ref(false)
 const handleRole = (data) => {
   if (isNulld(data)) {
     dialogTitle.value = i18n.t('roles.addRole')
@@ -50,6 +56,14 @@ const handleRole = (data) => {
     dialogTableValue.value = JSON.parse(JSON.stringify(data))
   }
   dialogVisible.value = true
+}
+
+//setting
+const handleSetting = (data) => {
+  roleTitle.value = i18n.t('roles.settingRole')
+  roleVisible.value = true
+  roleData.value = JSON.parse(JSON.stringify(data))
+  console.log('data', data)
 }
 
 const handleDeleteRole = (id) => {

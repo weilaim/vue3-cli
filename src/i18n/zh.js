@@ -53,5 +53,6 @@ export default {
     action: '操作',
     addRole: '添加角色',
     editorRole: '编辑角色',
+    settingRole: '角色授权',
   },
 }

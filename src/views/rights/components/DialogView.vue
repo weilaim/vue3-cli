@@ -19,7 +19,7 @@
 
 <script setup>
 import { reactive, ref, watch } from 'vue'
-import { addRole } from '@/api/roles'
+import { addRole, editorRole } from '@/api/roles'
 import { useI18n } from 'vue-i18n'
 const i18n = useI18n()
 const dialogVisible = ref(false)
@@ -43,10 +43,12 @@ const emit = defineEmits(['update:modelValue', 'initRolesList'])
 const handleConfirm = () => {
   ruleFormRef.value.validate(async (valid) => {
     if (valid) {
-      const res = await addRole(formRole.value)
+      prop.dialogTitle === '添加用户' || prop.dialogTitle === 'addrole'
+        ? await addRole(formRole.value)
+        : await editorRole(formRole.value)
       emit('initRolesList')
       handleClose()
-      $message.success(res.meta.msg)
+      $message.success('操作成功')
     } else {
       $message.error('请输入角色名称')
     }

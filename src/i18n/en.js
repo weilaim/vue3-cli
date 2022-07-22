@@ -51,7 +51,8 @@ export default {
     roleName: 'roleName',
     roleDesc: 'roleDesc',
     action: 'action',
-    addRole: 'add role',
+    addRole: 'addrole',
     editorRole: 'editro role',
+    settingRole: 'setting role',
   },
 }
