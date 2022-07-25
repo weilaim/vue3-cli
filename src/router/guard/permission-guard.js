@@ -16,7 +16,6 @@ export function createPermissionGuard(router) {
       } else {
         if (userStore.userId) {
           // 已经拿到用户信息 TOD
-          console.log('userId', userStore.userId)
           next()
         } else {
           //获取用户信息 -----

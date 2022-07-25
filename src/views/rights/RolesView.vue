@@ -63,7 +63,6 @@ const handleSetting = (data) => {
   roleTitle.value = i18n.t('roles.settingRole')
   roleVisible.value = true
   roleData.value = JSON.parse(JSON.stringify(data))
-  console.log('data', data)
 }
 
 const handleDeleteRole = (id) => {
@@ -84,7 +83,6 @@ const handleDeleteRole = (id) => {
 }
 const initRolesList = async () => {
   const res = await roleList()
-  console.log('res', res)
 
   if (res.meta.status === 200) {
     tableData.value = res.data

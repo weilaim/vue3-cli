@@ -2,7 +2,18 @@ export const basicRoutes = [
   {
     name: 'home',
     path: '/',
+    redirect: { name: 'Dashboard' },
     component: () => import('@/layout/index.vue'),
+    children: [
+      {
+        name: 'Dashboard',
+        path: '/dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: {
+          title: 'Dashboard',
+        },
+      },
+    ],
   },
   {
     name: 'LOGIN',
@@ -11,15 +22,6 @@ export const basicRoutes = [
     isHidden: true,
     meta: {
       title: '登录页',
-    },
-  },
-
-  {
-    name: 'Dashboard',
-    path: '/dashboard',
-    component: () => import('@/views/dashboard/index.vue'),
-    meta: {
-      title: 'Dashboard',
     },
   },
 

@@ -3,7 +3,8 @@ import { resResolve, resReject, reqResolve, reqReject } from './interceptors'
 
 export function createAxios(options = {}) {
   const defaultOptions = {
-    baseURL: import.meta.env.VITE_APP_BASE_API,
+    // baseURL: import.meta.env.VITE_APP_BASE_API,
+    baseURL: 'https://lianghj.top:8888/api/private/v1',
     timeout: 12000,
   }
   const service = axios.create({

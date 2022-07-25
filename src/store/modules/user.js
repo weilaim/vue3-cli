@@ -52,7 +52,6 @@ export const useUserStore = defineStore('user', {
     async userLogin(data) {
       try {
         const res = await login(data)
-        console.log('login', res)
         if (!res.data) {
           return Promise.reject(res)
         }

@@ -23,7 +23,6 @@ const data = ref([])
 const initRightsList = async () => {
   const res = await rightsList('tree')
   data.value = res.data
-  console.log('list', res)
 }
 initRightsList()
 </script>

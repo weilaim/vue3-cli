@@ -36,8 +36,6 @@ const defaultProps = {
   children: 'children',
   label: 'authName',
 }
-console.log('roleData', prop.roleData)
-
 const roleVisible = ref(false)
 const emit = defineEmits(['update:modelValue'])
 const handleClose = () => {

@@ -32,8 +32,6 @@ export function reqResolve(config) {
 }
 
 export function reqReject(error) {
-  console.log('err', error)
-
   return Promise.reject(error)
 }
 
@@ -42,8 +40,6 @@ export function resResolve(response) {
 }
 
 export function resReject(error) {
-  console.log('error', error)
-
   let { code, message } = error.response?.data || {}
   if (isNullOrUndef(code)) {
     // 未知错误

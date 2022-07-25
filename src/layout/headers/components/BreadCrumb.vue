@@ -15,7 +15,6 @@ const router = useRouter
 const breadcrumbList = ref([])
 const initBreadcrumbList = () => {
   breadcrumbList.value = route.matched
-  console.log(route.matched)
 }
 
 const handleRedirect = (path) => {

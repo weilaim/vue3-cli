@@ -52,6 +52,9 @@ const handleLogin = async () => {
   //登录
   try {
     const res = await login({ username, password: password.toString() })
+    if (res.code === -1) {
+      $message.error(res.message)
+    }
     if (res.meta.status === 200) {
       $message.success('登录成功啦')
       setToken(res.data.token)
@@ -63,10 +66,10 @@ const handleLogin = async () => {
       }
       router.push('/')
     } else {
-      $message.warning(res.meta.msg)
+      $message.warning(res.meta.msg || 'info')
     }
   } catch (error) {
-    $message.error(error.meta.msg)
+    $message.error(error || '未知错误')
   }
 }
 

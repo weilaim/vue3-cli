@@ -40,8 +40,6 @@ export function deleteUser(id) {
   })
 }
 export function getUser(id) {
-  console.log('id', id)
-
   if (id) {
     return request({
       url: `/users/${id}`,

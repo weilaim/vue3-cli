@@ -9,6 +9,7 @@
           <Headers />
         </el-header>
         <el-main bg-gray-2>
+          <!-- <Dashboard /> -->
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -21,6 +22,7 @@ import Menu from './Menu/index.vue'
 import Headers from './headers/index.vue'
 import useMenuStore from '@/store/modules/menu'
 import { computed } from 'vue'
+
 const menuStore = useMenuStore()
 
 const siderWith = computed(() => {
